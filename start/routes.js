@@ -20,20 +20,22 @@ const Route = use('Route')
 
 Route.on('/').render('home')
 
-Route.get('/posts','PostController.index')   
+Route.get('/posts', 'PostController.index')
 
-Route.get('/posts/add','PostController.add')
+Route.get('/posts/add', 'PostController.add')
 
-Route.get('/posts/edit/:id','PostController.edit')
+Route.get('/posts/edit/:id', 'PostController.edit')
 
-Route.get('posts/:id','PostController.details')
+Route.get('/posts/export/:format', 'PostController.exportExcel')
 
-Route.post('/posts','PostController.store')  
+Route.get('posts/:id', 'PostController.details')
 
-Route.put('/posts/:id','PostController.update')
+Route.post('/posts', 'PostController.store').validator('AddPost')
 
-Route.delete('/posts/:id','PostController.destroy')
-// // Run route directly with the Arrow Function 
+Route.put('/posts/:id', 'PostController.update')
+
+Route.delete('/posts/:id', 'PostController.destroy')
+// // Run route directly with the Arrow Function
 // Route.get('/test', () => 'Hello World');
 
 // //Run route with normal function
