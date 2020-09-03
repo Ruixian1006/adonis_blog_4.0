@@ -1,0 +1,20 @@
+@layout('main')
+
+@section('content')
+{{--  Title retrieve from the backend   --}}
+<h1>{{title}}</h1>
+
+{{--  Notification after added a post  --}}
+@if(old('notification'))
+<div class="alert alert-success">
+    {{old('notification')}}
+</div>
+@endif
+
+{{--  loop  --}}
+<ul class="list-group">
+    @each( post in posts)
+<li class="list-group-item"><a href="/posts/{{post.id}}">{{post.title}}</a></li>
+    @endeach
+</ul>
+@endsection
