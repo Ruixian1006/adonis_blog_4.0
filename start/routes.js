@@ -24,6 +24,8 @@ Route.get('/posts', 'PostController.index')
 
 Route.get('/posts/add', 'PostController.add')
 
+Route.get('/posts/table', 'PostController.table')
+
 Route.get('/posts/edit/:id', 'PostController.edit')
 
 Route.get('/posts/export/:format', 'PostController.exportExcel')

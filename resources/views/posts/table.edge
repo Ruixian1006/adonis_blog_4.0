@@ -1,0 +1,51 @@
+@layout('main')
+
+@section('css')
+    {{style('https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css')}}
+@endsection
+
+@section('content')
+<table id="myTable">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Body</th>
+        </tr>
+    </thead>
+    <tbody>
+        @each( post in posts)
+        <tr>
+            <td>{{post.title}}</td>
+            <td>{{post.body}}</td>
+        </tr>
+        @endeach
+    </tbody>
+</table>
+@endsection
+
+@section('script')
+{{script('https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.slim.min.js')}}
+{{script('https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js')}}
+{{script('https://cdn.datatables.net/responsive/2.2.1/js/dataTables.responsive.min.js')}}
+{{script('https://cdn.datatables.net/buttons/1.6.2/js/dataTables.buttons.min.js')}}
+{{script('https://cdn.datatables.net/buttons/1.6.2/js/buttons.flash.min.js')}}
+{{script('https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js')}}
+{{script('https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js')}}
+{{script('https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js')}}
+{{script('https://cdn.datatables.net/buttons/1.6.2/js/buttons.html5.min.js')}}
+{{script('https://cdn.datatables.net/buttons/1.6.2/js/buttons.print.min.js')}}
+<script>
+    $(document).ready(function() {
+        
+        $('#myTable').DataTable({
+            dom: 'Bfrtip',
+            buttons: [
+                'copyHtml5',
+                'excelHtml5',
+                'csvHtml5',
+                'pdfHtml5'
+            ]
+        });
+    });
+</script>
+@endsection

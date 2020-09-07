@@ -1,5 +1,7 @@
 'use strict'
 
+const { post } = require("@adonisjs/framework/src/Route/Manager");
+
 //Bring in model
 const Post = use('App/Models/Post')
 
@@ -103,6 +105,13 @@ class PostController {
         })
         ss.addSheet('Posts', data)
         ss.download('posts-export')
+    }
+    async table({ view }) {
+        const posts = await Post.all();
+        console.log(posts.toJSON());
+        return view.render('posts.table', {
+            posts: posts.toJSON()
+        })
     }
 }
 
